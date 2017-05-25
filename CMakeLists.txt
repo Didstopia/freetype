@@ -87,6 +87,7 @@ set(BASE_SRCS
     src/psnames/psmodule.c)
 
 	ADD_LIBRARY(freetype SHARED ${BASE_SRCS} )
+    ADD_LIBRARY(freetype_static STATIC ${BASE_SRCS} )
 
 # Tests and other stuff
 	CHECK_INCLUDE_FILE(sys/wait.h HAVE_WAIT_H)
@@ -94,22 +95,29 @@ set(BASE_SRCS
 	IF(HAVE_WAIT_H)
 		ADD_EXECUTABLE(ftrandom src/tools/ftrandom/ftrandom.c)
 		TARGET_LINK_LIBRARIES(ftrandom freetype m)		# todo:  m
+        TARGET_LINK_LIBRARIES(ftrandom freetype_static m)       # todo:  m
 		INSTALL(TARGETS ftrandom DESTINATION  ${INSTALL_EXAMPLE} COMPONENT Example)
 	ENDIF()
 
 	ADD_EXECUTABLE(test_afm src/tools/test_afm.c)
 	TARGET_LINK_LIBRARIES(test_afm freetype m)
+    TARGET_LINK_LIBRARIES(test_afm freetype_static m)
 
 	ADD_EXECUTABLE(test_bbox src/tools/test_bbox.c)
 	TARGET_LINK_LIBRARIES(test_bbox freetype m)
+    TARGET_LINK_LIBRARIES(test_bbox freetype_static m)
 
 	ADD_EXECUTABLE(test_trig src/tools/test_trig.c)
 	TARGET_LINK_LIBRARIES(test_trig freetype m)
+    TARGET_LINK_LIBRARIES(test_trig freetype_static m)
 
 	INSTALL(TARGETS test_afm test_bbox test_trig RUNTIME DESTINATION  ${INSTALL_EXAMPLE} COMPONENT Example)
 
+    set_target_properties(freetype_static PROPERTIES OUTPUT_NAME freetype)
+
 # Install Freetype Library
 	install_library(freetype)
+    install_library(freetype_static)
 
 # Install Freetype Headers
 	install_header(include/)
