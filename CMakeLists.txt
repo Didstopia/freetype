@@ -99,19 +99,19 @@ set(BASE_SRCS
 		INSTALL(TARGETS ftrandom DESTINATION  ${INSTALL_EXAMPLE} COMPONENT Example)
 	ENDIF()
 
-	ADD_EXECUTABLE(test_afm src/tools/test_afm.c)
-	TARGET_LINK_LIBRARIES(test_afm freetype m)
-    TARGET_LINK_LIBRARIES(test_afm freetype_static m)
+	#ADD_EXECUTABLE(test_afm src/tools/test_afm.c)
+	#TARGET_LINK_LIBRARIES(test_afm freetype m)
+    #TARGET_LINK_LIBRARIES(test_afm freetype_static m)
 
-	ADD_EXECUTABLE(test_bbox src/tools/test_bbox.c)
-	TARGET_LINK_LIBRARIES(test_bbox freetype m)
-    TARGET_LINK_LIBRARIES(test_bbox freetype_static m)
+	#ADD_EXECUTABLE(test_bbox src/tools/test_bbox.c)
+	#TARGET_LINK_LIBRARIES(test_bbox freetype m)
+    #TARGET_LINK_LIBRARIES(test_bbox freetype_static m)
 
-	ADD_EXECUTABLE(test_trig src/tools/test_trig.c)
-	TARGET_LINK_LIBRARIES(test_trig freetype m)
-    TARGET_LINK_LIBRARIES(test_trig freetype_static m)
+	#ADD_EXECUTABLE(test_trig src/tools/test_trig.c)
+	#TARGET_LINK_LIBRARIES(test_trig freetype m)
+    #TARGET_LINK_LIBRARIES(test_trig freetype_static m)
 
-	INSTALL(TARGETS test_afm test_bbox test_trig RUNTIME DESTINATION  ${INSTALL_EXAMPLE} COMPONENT Example)
+	#INSTALL(TARGETS test_afm test_bbox test_trig RUNTIME DESTINATION  ${INSTALL_EXAMPLE} COMPONENT Example)
 
     set_target_properties(freetype_static PROPERTIES OUTPUT_NAME freetype)
 
